@@ -17,11 +17,10 @@ x <- buildViSiGrid( X = intubation,
                               pixel = 2 )
 plot(x, main = "Intubation, t_0 : Blade in the mouth")
 
-## ---- fig.show='hold',fig.width=7,fig.height=7---------------------------
-bookintubation <- changeShoworder( bookintubation , c(2,3,4))
-Vintubation <- buildViSiGrid( X = intubation, 
-                              book = bookintubation ,
-                              t_0 = "time_in_intub",
-                              pixel = 1 )
-plot(Vintubation, main = "Intubation, t_0 : Blade in the mouth")
+## ---- fig.show='hold',fig.width=7, fig.height=7--------------------------
+#bookintubation <- changeShoworder( bookintubation , c(2,3,4))
+#Vintubation <- buildViSiGrid( X = intubation, 
+#                              book = bookintubation ,
+#                              t_0 = "time_in_intub",pixel = 1 )
+#plot(Vintubation, main = "Intubation, t_0 : Blade in the mouth")
 

@@ -254,9 +254,10 @@ setMethod( "changeShoworder" , c("ViSibook","numeric") , function(book,v ) {
   temp <- c()
   for (i in seq_along(book[ , 4])) { # i = 1
     temp[i] <- switch( as.character( book[ , 4][i] %in% v),
-                       "FALSE" = NA,
-                       "TRUE" <- match( book[ , 4][i] ,v))
+                       "FALSE" = 0,
+                       "TRUE" = match( book[ , 4][i] ,v))
   }
+ if ( sum(temp == 0) > 0) { temp[ which(temp == 0) ] <- rep( NA , sum(temp == 0)  ) }
   methods::slot(book, "showorder") <- temp
   return( book )
 })
