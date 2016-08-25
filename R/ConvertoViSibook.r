@@ -8,8 +8,7 @@
 #' Optionally other characteristics can be filled :
 #'  \strong{GZDebn,  GZFin, Repetition, BZBeforeDeb, BZBeforeFin, BZAfterDeb, BZAfterFin, BZLong , BZLtype }.
 #' @return a ViSibook object.
-#' @seealso See \code{\linkS4class{ViSibook}} to get the definitions of the columns 
-#' and see  \code{\link{plot-ViSigrid-method}} for examples.
+#' @seealso See  \code{\link{visielse}} for examples.
 ConvertoViSibook <- function(x ) {  
   if (is.na( match( "vars" , colnames( x ) ) ) ) { stop( " ConvertoViSibook : colname \"vars\" not found \n " ) }
   if (is.na( match( "label" , colnames( x ) ) ) ) { stop( " ConvertoViSibook : colname \"label\" not found \n " ) }
@@ -17,6 +16,7 @@ ConvertoViSibook <- function(x ) {
   if (is.na( match( "showorder" , colnames( x ) ) ) ) { stop( " ConvertoViSibook : colnames \"showorder\" not found " ) }
   if (is.na( match( "deb" , colnames( x ) ) ) ) { stop( " ConvertoViSibook : colnames \"deb\" not found " ) }
   if (is.na( match( "fin" , colnames( x ) ) ) ) { stop( " ConvertoViSibook : colnames \"fin\" not found " ) }
+  x <- x[order(x$showorder),]
   return( ViSibook( 
     vars = x[ , match( "vars" , colnames( x ) ) ] ,
     label = x[ , match( "label" , colnames( x ) ) ] ,

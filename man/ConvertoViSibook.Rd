@@ -18,7 +18,6 @@ a ViSibook object.
 ConvertoViSibook convert a \code{data.frame} in \code{ViSibook} object.
 }
 \seealso{
-See \code{\linkS4class{ViSibook}} to get the definitions of the columns 
-and see  \code{\link{plot-ViSigrid-method}} for examples.
+See  \code{\link{visielse}} for examples.
 }
 

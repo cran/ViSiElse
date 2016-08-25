@@ -81,8 +81,7 @@ setMethod("initialize", signature("ViSibook"),
     if (any( rep( length( vars ) , 2 ) != c( length( GZDeb ) , length( GZFin ) ) ) ) {
       Repetition <- rep( NA , length( vars ) )
       warning( " initialize ( ViSibook ) : Length of GZDeb and/or GZFin are not equals to the length of vars \n " )
-      warning(" initialize ( ViSibook ) : No green zone defined for punctuals actions \n ")
-    }else{
+      }else{
       #### Checking fin' zones are > to def' zones
       if (any( (as.numeric(GZDeb) >= as.numeric(GZFin) ) , na.rm = TRUE ) ) {
         GZDeb[ which( (as.numeric(GZDeb) < as.numeric(GZFin) ) ) ] <- rep( NA , sum( (as.numeric(GZDeb) < as.numeric(GZFin) ), na.rm = TRUE ) )
@@ -109,7 +108,6 @@ setMethod("initialize", signature("ViSibook"),
     }
 }else{
     Repetition <- rep( NA , length( vars ) )
-    warning("No green zone defined for punctuals actions \n ")
   }
   # Green zone fin..................................................................................................................
   #.................................................................................................................................
