@@ -2,10 +2,10 @@
 % Please edit documentation in R/ViSibook.r
 \docType{methods}
 \name{set-ViSibook-method}
+\alias{set-ViSibook-method}
+\alias{[<-,ViSibook,numeric,numeric,ANY-method}
 \alias{[<-,ViSibook,missing,numeric,ANY-method}
 \alias{[<-,ViSibook,numeric,missing,ANY-method}
-\alias{[<-,ViSibook,numeric,numeric,ANY-method}
-\alias{set-ViSibook-method}
 \title{Method set for ViSibook object.}
 \usage{
 \S4method{[}{ViSibook,numeric,numeric,ANY}(x, i, j) <- value
@@ -32,4 +32,3 @@ Method set for ViSibook object.
 \seealso{
 \code{\linkS4class{ViSibook}}
 }
-

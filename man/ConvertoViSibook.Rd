@@ -20,4 +20,3 @@ ConvertoViSibook convert a \code{data.frame} in \code{ViSibook} object.
 \seealso{
 See  \code{\link{visielse}} for examples.
 }
-

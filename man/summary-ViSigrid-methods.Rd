@@ -2,8 +2,8 @@
 % Please edit documentation in R/summary.ViSigrid.r
 \docType{methods}
 \name{summary-ViSigrid-method}
-\alias{summary,ViSigrid-method}
 \alias{summary-ViSigrid-method}
+\alias{summary,ViSigrid-method}
 \title{Method \code{summary-ViSigrid}}
 \usage{
 \S4method{summary}{ViSigrid}(object)
@@ -24,4 +24,3 @@ Method summary for ViSigrid object.
 \code{\linkS4class{ViSigrid}}, \code{\link{visielse}},\code{\linkS4class{ViSibook}}.
 and see \code{\link{plot-ViSigrid-method}} for examples.
 }
-

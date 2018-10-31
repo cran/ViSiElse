@@ -2,10 +2,10 @@
 % Please edit documentation in R/ViSibook.r
 \docType{methods}
 \name{[,ViSibook,numeric,missing,ANY-method}
-\alias{[,ViSibook,missing,numeric,ANY-method}
-\alias{[,ViSibook,missing,numeric-method}
 \alias{[,ViSibook,numeric,missing,ANY-method}
 \alias{[,ViSibook,numeric,missing-method}
+\alias{[,ViSibook,missing,numeric,ANY-method}
+\alias{[,ViSibook,missing,numeric-method}
 \alias{[,ViSibook,numeric,numeric,ANY-method}
 \alias{[,ViSibook,numeric,numeric-method}
 \title{Method get for ViSibook object.}
@@ -34,4 +34,3 @@ Method get for ViSibook object.
 \seealso{
 \code{\linkS4class{ViSibook}}.
 }
-

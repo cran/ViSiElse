@@ -1,5 +1,5 @@
 #' \code{visielse} plots the graphic from data and build an object class
-#' \code{ViSigrid} with at least data of times of individual realisation
+#' \code{ViSigrid} with at least data of times of individual execution
 #' for each punctual action defined in the \code{ViSibook}.
 #' @name visielse
 #' @title Function \code{visielse}
@@ -20,7 +20,7 @@
 #' @param group A \code{factor} with two \code{levels}.
 #' \code{group} indicates the group attributed to the individuals,
 #' it has same the length as the number of rows of \code{X}.
-#' @param Xsup  A \code{data.frame} or \code{matrix} storing supplementary time data,  \strong{all indivuals in}  \code{Xsup}  \strong{must be in } \code{X}.
+#' @param Xsup  A \code{data.frame} or \code{matrix} storing supplementary time data,  \strong{all individuals in}  \code{Xsup}  \strong{must be in } \code{X}.
 #' @param method   In \{ \code{"global"} ,  \code{"cut"} ,  \code{"join"} , \code{"within"} \}.
 #' \code{method} specifies the plotting method, see \code{details}. If \code{group} is \code{NULL},
 #'  \code{method} is set to \code{"global"}.
@@ -51,9 +51,9 @@
 #' @param decrgr2  A boolean. When sorted.line is TRUE and decrgr2 is TRUE, long actions of the second group are plotted in decreasing order by starting times.
 #' @param sorted.line  A boolean.
 #' When \code{sorted.line} is \code{TRUE}, it allows long actions to be sorted by starting time.
-#' @param times  A boolean. If \code{times} is \code{TRUE}, it incidicates that \code{X} contains data in a time format.
+#' @param times  A boolean. If \code{times} is \code{TRUE}, it indicates that \code{X} contains data in a time format.
 #' @param timeformat  time format.  If \code{times} is \code{TRUE}.
-#' @param idsubject  An integer betweem 1 and \code{dim(X)[2]}.  \code{idsubject} indicates the
+#' @param idsubject  An integer between 1 and \code{dim(X)[2]}.  \code{idsubject} indicates the
 #' number of the column of X that contains individuals id numbers.
 #' @param colvect   A \code{matrix} containing colors.
 #'  Colors are automatically computed if \code{colvect} is \code{NULL}.
@@ -87,7 +87,7 @@
 #'
 #' When plotting the \code{\linkS4class{ViSigrid}} object, indicators for a punctual action are represented by
 #' white circles linked by a line. For long action, only a black line is plotted from
-#' the median (or mean) of the punctal action staring it. The line length represents
+#' the median (or mean) of the punctual action staring it. The line length represents
 #' the median (or mean) of the long action duration.
 #' Informers are computed directly on the given matrix for punctual action.
 #' And for a long action it is calculated on the difference between the beginning punctual action and the ending one.
@@ -125,7 +125,7 @@
 #'
 #' }
 #'
-#' @details x can also has the colunms : GZDebn,  GZFin, Repetition, BZBeforeDeb, BZBeforeFin, BZAfterDeb, BZAfterFin, BZLong , BZLtype
+#' @details x can also has the columns : GZDebn,  GZFin, Repetition, BZBeforeDeb, BZBeforeFin, BZAfterDeb, BZAfterFin, BZLong , BZLtype
 #' @seealso Classes \code{\linkS4class{ViSigrid}} and \code{\linkS4class{ViSibook}}.
 #'  The method plot for ViSigrid object \code{\link{plot-ViSigrid-method}} for examples.
 #'
@@ -227,9 +227,11 @@ visielse <- function(X , book=NULL, is.ViSibook=FALSE, doplot =TRUE , Xsup = NUL
           }else{
                     if( is.ViSibook==FALSE){
            book <- ConvertoViSibook(book)
+           # Modification
+           X <- X[ , match(append(methods::slot( book , "vars" )[ which( methods::slot( book , "typeA" ) == "p" ) ], colnames(X)[1], after = 0), colnames(X))]
                     }
           }
-  # A data.frame containing the times performances for punctuals actions, colnames( X ) must corresponds to names given in the book in the slot vars
+  # A data.frame containing the times performances for punctual actions, colnames( X ) must corresponds to names given in the book in the slot vars
   ### Verification group if method !="global"
   if (method != "global" ) {
     if (is.null( group ) ) {
@@ -264,7 +266,9 @@ visielse <- function(X , book=NULL, is.ViSibook=FALSE, doplot =TRUE , Xsup = NUL
         grwithin <- switch( as.character( is.null( grwithin ) ) , "TRUE" = levels( group )[ 1 ], "FALSE" = grwithin )
         temp  <-  dim( X )[ 1 ]
         # Coping time data
-        X <- Matrix::rBind( X , X[ which( group == grwithin ), ] )
+        # X <- Matrix::rBind( X , X[ which( group == grwithin ), ] ) rBind deprecated
+        # Modification
+        X <- rbind( X , X[ which( group == grwithin ), ] )
         # Adapting the group vector to the new time matrix
         group <- gl( 2 , temp , labels = c( "All" , as.character( grwithin ) ) ) [ seq( 1 , temp + sum( group == grwithin ) , 1 ) ]
       }
@@ -282,12 +286,14 @@ visielse <- function(X , book=NULL, is.ViSibook=FALSE, doplot =TRUE , Xsup = NUL
                        vect_tps = vect_tps , t_0 = t_0 , t_0_action=t_0_action, idsubject = idsubject , retX = TRUE)
       MATp[ seq( sum( methods::slot( book , "typeA") == "p" ) + 1 , sum( methods::slot( book , "typeA") == "p" ) *2 , 1 ), ] <-  temp$MATGrid
       t_0 <- temp$t_0
-      X <- Matrix::rBind( tempX , temp$X )
+      # Modification
+      # X <- Matrix::rBind( tempX , temp$X ) rBind deprecated
+      X <- rbind( tempX , temp$X )
       rm( tempX )
     }
   }
 #...................................................................................................................................................................................................................
-  ### informers Punctuals action
+  ### informers Punctual action
   if (is.null( informer ) == FALSE ) {
     if (method == "join" || method == "global" ) {
       if (informer == "mean") {
@@ -303,13 +309,15 @@ visielse <- function(X , book=NULL, is.ViSibook=FALSE, doplot =TRUE , Xsup = NUL
     }else{
       if ( method == "cut" || method == "within" ) {
         if (informer == "mean") {
-          informers <- Matrix::rBind(
+                  # Modification : Matrix::rBind --> rbind
+          informers <- rbind(
             apply( X[ which( group == levels( group ) [ 1 ] ) , -idsubject ] , MARGIN = 2 , FUN = function(x )(c( mean( x , na.rm = TRUE ) - sqrt( stats::var( x , na.rm = TRUE ) ) , mean( x , na.rm = TRUE ) , mean( x , na.rm = TRUE ) + sqrt( stats::var( x , na.rm = TRUE ) ) ) ) ),
             apply( X[ which( group == levels( group ) [ 2 ] ) , -idsubject ] , MARGIN = 2 , FUN = function(x )(c( mean( x , na.rm = TRUE ) - sqrt( stats::var( x , na.rm = TRUE ) ) , mean( x , na.rm = TRUE ) , mean( x , na.rm = TRUE ) + sqrt( stats::var( x , na.rm = TRUE ) ) ) ) )
           )
         }else{
           if (informer == "median") {
-            informers <- Matrix::rBind( apply( X[ which( group == levels( group )[ 1 ] ) , -idsubject ] , MARGIN = 2 , FUN = function(x )(c( stats::quantile( x , na.rm = TRUE )[ 2 ]  , stats::median( x , na.rm = TRUE )  , stats::quantile( x , na.rm = TRUE )[ 4 ] ) ) ) ,
+                    # Modification : Matrix::rBind --> rbind
+            informers <- rbind( apply( X[ which( group == levels( group )[ 1 ] ) , -idsubject ] , MARGIN = 2 , FUN = function(x )(c( stats::quantile( x , na.rm = TRUE )[ 2 ]  , stats::median( x , na.rm = TRUE )  , stats::quantile( x , na.rm = TRUE )[ 4 ] ) ) ) ,
                                 apply( X[ which( group == levels( group )[ 2 ] ) , -idsubject ] , MARGIN = 2 , FUN = function(x )(c( stats::quantile( x , na.rm = TRUE )[ 2 ]  , stats::median( x , na.rm = TRUE )  , stats::quantile( x , na.rm = TRUE )[ 4 ] ) ) ) )
           }else{
             warning( " informer value not recognized, it must be \"mean\", \" median\" or NULL - informer set to NULL \n " )
@@ -318,11 +326,14 @@ visielse <- function(X , book=NULL, is.ViSibook=FALSE, doplot =TRUE , Xsup = NUL
         }
       }
     }
+    # Modification ordre des informers en fonction de l'ordre des noms des variables du book qui est classe en fonction de showorder
+    #informers <- informers[ , match(methods::slot( book , "vars"), colnames(informers))]
+    #informers <- informers[ , match(methods::slot( book , "vars" )[ which( methods::slot( book , "typeA" ) == "p" ) ], colnames(informers))]
   }else(
     informers <- new( "matrix" )
   )
   #...................................................................................................................................................................................................................
-  ################# Tests Punctuals Actions
+  ################# Tests Punctual Actions
   if (tests == TRUE & method != "global" & is.null( informer ) == FALSE  ) {
     if (informer == "mean") {
       testsP <- apply( X[ , -idsubject ] , MARGIN = 2 , FUN = function(x ) { stats::wilcox.test( x[ which( group == levels( group )[ 1 ] ) ] , x[ which( group == levels( group )[ 2 ] ) ] )$p.value } ) < threshold.test
@@ -365,6 +376,7 @@ visielse <- function(X , book=NULL, is.ViSibook=FALSE, doplot =TRUE , Xsup = NUL
   ################### Long Actions Informers
   if (is.null( informer ) == FALSE ) {
     if (method == "join" || method == "global" ) {
+
       if (informer == "mean") {
         for (ia in seq( 1 , dim( L )[ 2 ] , 2 ) ) {  # ia = 1
           informers <- cbind( informers ,
@@ -420,7 +432,9 @@ visielse <- function(X , book=NULL, is.ViSibook=FALSE, doplot =TRUE , Xsup = NUL
     temp <- matrix( unlist( lapply( seq( 1 , dim( L )[ 2 ] , 2 ) ,  function(x ) (L[ , x + 1 ] - L[ , x ] ) )  ) , nrow = dim( L )[ 1 ] , byrow = FALSE )
     if (informer == "mean") {
       testsP <- c( testsP , apply( temp , MARGIN = 2 , FUN = function(x ) { stats::wilcox.test( x[ which( group == levels( group )[ 1 ] ) ] , x[ which( group == levels( group )[ 2 ] ) ] )$p.value } ) < threshold.test )
-    }else{
+    # Modification testP
+      # print(testsP)
+      }else{
       if (informer == "median") {
         testsP <- c( testsP , apply( temp , MARGIN = 2 , function(x ) { stats::mood.test( x[ which( group == levels( group )[ 1 ] ) ] , x[ which( group == levels( group )[ 2 ] ) ] )$p.value } ) < threshold.test )
       }
@@ -449,7 +463,9 @@ visielse <- function(X , book=NULL, is.ViSibook=FALSE, doplot =TRUE , Xsup = NUL
           temp 	<- dim( Xsup )[ 1 ]
           temp1 	<- which( groupsup == rep( grwithin , length( groupsup ) ) )
           if (any( groupsup == rep( grwithin , length( groupsup ) ) ) ) {
-            Xsup 		<- Matrix::rBind( Xsup , Xsup[ temp1 , ] )
+            # Modification
+            # Xsup 		<- Matrix::rBind( Xsup , Xsup[ temp1 , ] ) rBind deprecated
+            Xsup 		<- rbind( Xsup , Xsup[ temp1 , ] )
             groupsup	<- gl( n = 2 , k = temp , labels = c( "All" , grwithin ) )[ seq( 1 , temp + length( temp1 ) , 1) ]
             idsup 		<- c( idsup , idsup[ temp1 ] )
           }
@@ -461,12 +477,15 @@ visielse <- function(X , book=NULL, is.ViSibook=FALSE, doplot =TRUE , Xsup = NUL
         tempX <- temp$X
         temp <- MATgrid( Xsup[ which( groupsup == levels( group )[ 2 ] ) , ] , book , pixel = pixel , times = times , timeformat = timeformat , idsubject = idsubject , vect_tps = vect_tps , retX = TRUE )
         MATpsup[ seq( 1 + sum( methods::slot( book , "typeA") == "p" ), 2 * sum( methods::slot( book , "typeA") == "p" ) , 1 ) , ] <- temp$MATGrid
-        Xsup <- Matrix::rBind( tempX , temp$X )
+        # Modification
+        # Xsup <- Matrix::rBind( tempX , temp$X ) rBind deprecated
+        Xsup <- rbind( tempX , temp$X )
       }
     }
     if (quantity == "dens" ) {
       if (method != "global" & method != "join" ) {
-        MATpsup <- Matrix::rBind( round( MATpsup[ seq( 1 , dim( MATpsup )[ 1 ] / 2 , 1 ), ] * 100 / nind1 , 0 ) ,
+          # Modification Matrix::rBind-->rbind
+        MATpsup <- rbind( round( MATpsup[ seq( 1 , dim( MATpsup )[ 1 ] / 2 , 1 ), ] * 100 / nind1 , 0 ) ,
                           round( MATpsup[ seq( dim( MATpsup )[ 1 ] / 2 + 1 , dim( MATpsup )[ 1 ] , 1 ),] * 100 / nind2 , 0 ) )
       }else{
         MATpsup <- round( MATpsup * 100 / nind , 0 )
@@ -490,7 +509,8 @@ visielse <- function(X , book=NULL, is.ViSibook=FALSE, doplot =TRUE , Xsup = NUL
     #### Density or count  & colors grid matrice
     if( quantity == "dens" ){
               if (method != "global" & method != "join" ) {
-                        MATp <- Matrix::rBind( round( MATp[ seq( 1 , dim( MATp )[ 1 ] / 2 , 1 ), ] * 100 / (nind1),0),
+                        # Modification Matrix::rBind-->rbind
+                        MATp <- rbind( round( MATp[ seq( 1 , dim( MATp )[ 1 ] / 2 , 1 ), ] * 100 / (nind1),0),
                                                round( MATp[ seq( dim( MATp )[ 1 ] / 2 + 1 , dim( MATp )[ 1 ] , 1 ) , ] * 100 / (nind2),0))
               }else{
                         MATp <- round( MATp * 100 / (nind),0)
@@ -508,7 +528,8 @@ visielse <- function(X , book=NULL, is.ViSibook=FALSE, doplot =TRUE , Xsup = NUL
               }
     }else{
               if ( (is.null( colvect ) ) ) {
-                        colvect <- as.matrix( Matrix::rBind( colorspace::sequential_hcl( n = ncolvect ,
+                        # Modification Matrix::rBind-->rbind
+                        colvect <- as.matrix( rbind( colorspace::sequential_hcl( n = ncolvect ,
                                                                                          h = 264,
                                                                                          c. = c( 80 , 85 ) ,
                                                                                          l = c( 30 , 95 ) ,
@@ -522,7 +543,8 @@ visielse <- function(X , book=NULL, is.ViSibook=FALSE, doplot =TRUE , Xsup = NUL
                         )[ seq( ncolvect , 1 , -1 )[-1] ] ) )
               }else{
               if ( ( dim( colvect )[ 1 ] < ncolvect )   ) {
-                        colvect <- as.matrix( Matrix::rBind( colorspace::sequential_hcl( n = ncolvect ,
+                        # Modification Matrix::rBind-->rbind
+                        colvect <- as.matrix( rbind( colorspace::sequential_hcl( n = ncolvect ,
                                                                                          h = 264,
                                                                                          c. = c( 80 , 85 ) ,
                                                                                          l = c( 30 , 95 ) ,

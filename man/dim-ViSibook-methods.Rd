@@ -2,8 +2,8 @@
 % Please edit documentation in R/ViSibook.r
 \docType{methods}
 \name{dim-ViSibook-method}
-\alias{dim,ViSibook-method}
 \alias{dim-ViSibook-method}
+\alias{dim,ViSibook-method}
 \title{Method \code{dim-ViSibook}}
 \usage{
 \S4method{dim}{ViSibook}(x)
@@ -24,4 +24,3 @@ Method Dim for ViSibook object.
 \seealso{
 \code{\linkS4class{ViSibook}}
 }
-

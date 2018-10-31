@@ -2,8 +2,8 @@
 % Please edit documentation in R/ViSibook.r
 \docType{methods}
 \name{show-ViSibook-method}
-\alias{show,ViSibook-method}
 \alias{show-ViSibook-method}
+\alias{show,ViSibook-method}
 \title{Method \code{show-ViSibook}}
 \usage{
 \S4method{show}{ViSibook}(object)
@@ -17,4 +17,3 @@ Method show for ViSibook object.
 \seealso{
 \code{\linkS4class{ViSibook}}.
 }
-

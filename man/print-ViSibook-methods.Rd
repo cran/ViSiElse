@@ -2,9 +2,9 @@
 % Please edit documentation in R/print.Visibook.r
 \docType{methods}
 \name{print,ViSibook-method}
-\alias{print}
 \alias{print,ViSibook-method}
 \alias{print,ViSibook-methods}
+\alias{print}
 \alias{print-ViSibook-methods}
 \title{Method \code{print-ViSibook}}
 \usage{
@@ -20,4 +20,3 @@ Method print for ViSibook object.
 \code{\linkS4class{ViSibook}},  \code{\link{visielse}}, 
 and see \code{\link{plot-ViSigrid-method}} for examples.
 }
-

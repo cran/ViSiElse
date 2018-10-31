@@ -2,8 +2,8 @@
 % Please edit documentation in R/plot.ViSigrid.r
 \docType{methods}
 \name{plot-ViSigrid-method}
-\alias{plot,ViSigrid-method}
 \alias{plot-ViSigrid-method}
+\alias{plot,ViSigrid-method}
 \title{Method \code{plot-ViSigrid}}
 \usage{
 \S4method{plot}{ViSigrid}(x, scal.unit.tps = 10, unit.tps = "s",
@@ -11,8 +11,9 @@
   Fontsize.label.Action = 11, Fontsize.label.Time = 11,
   Fontsize.label.color = 9, col.main = "black", col.grid = "grey",
   colgreenzone = "green", colblackzone = "black", alphainf = 0.8,
-  alphasup = 1, alphaZones = 0.2, vp0h = 0.6, vp0w = 0.6, linA = 0.7,
-  rcircle = 15, lwdline = 2, lwd.grid = 1, lty.grid = 1)
+  alphasup = 1, alphaZones = 0.2, vp0h = 0.6, vp0w = 0.6,
+  linA = 0.7, rcircle = 15, lwdline = 2, lwd.grid = 1,
+  lty.grid = 1)
 }
 \arguments{
 \item{x}{A \code{ViSigrid} object built using the \code{\link{visielse}} function.}
@@ -31,7 +32,7 @@
 
 \item{Fontsize.label.Action}{Fontsize of labels of plotted actions.}
 
-\item{Fontsize.label.Time}{Fontsize of the time axe.}
+\item{Fontsize.label.Time}{Fontsize of the time axis.}
 
 \item{Fontsize.label.color}{Fontsize of legends.}
 
@@ -73,4 +74,3 @@ and group actions usually acquired from timestamps during video recorded session
 \code{\linkS4class{ViSigrid}}, \code{\linkS4class{ViSibook}},
  \code{\link{visielse}}.
 }
-

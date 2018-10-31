@@ -2,8 +2,8 @@
 % Please edit documentation in R/plot.ViSibook.R
 \docType{methods}
 \name{plot-ViSibook-method}
-\alias{plot,ViSibook-method}
 \alias{plot-ViSibook-method}
+\alias{plot,ViSibook-method}
 \title{Method \code{plot-ViSibook}}
 \usage{
 \S4method{plot}{ViSibook}(x, ncharmax = 10, ncharmaxdelay = 50)
@@ -21,4 +21,3 @@ Method plot for ViSibook object.
 \seealso{
 \code{\linkS4class{ViSibook}}, \code{\link{visielse}}
 }
-

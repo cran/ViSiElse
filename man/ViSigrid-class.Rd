@@ -2,8 +2,8 @@
 % Please edit documentation in R/ViSigrid.r
 \docType{class}
 \name{ViSigrid-class}
-\alias{ViSigrid}
 \alias{ViSigrid-class}
+\alias{ViSigrid}
 \title{Class \code{ViSigrid}}
 \description{
 Class \code{ViSigrid} defines the structure of the process to be plotted.
@@ -26,7 +26,7 @@ in the book corresponding to the supplementary times.}
 
 \item{\code{BZL}}{A \code{"dgCMatrix"} It stores black zones for long actions, calculated for each individuals.}
 
-\item{\code{Lsup}}{A \code{"data.frame"} for the long actions having  a showorder and suplementary times defined, it 
+\item{\code{Lsup}}{A \code{"data.frame"} for the long actions having  a showorder and supplementary times defined, it 
 stores the data corresponding to those actions.}
 
 \item{\code{book}}{A \code{"ViSibook"} it stores the structure of the grid for the plot.}
@@ -41,7 +41,7 @@ stores the data corresponding to those actions.}
 
 \item{\code{parameters}}{A \code{"list"}. It stores the parameters put in the \code{\link{visielse}} function.}
 }}
+
 \seealso{
 \code{\link{visielse}}, \code{\link{plot,ViSigrid-method}}, \code{\linkS4class{ViSibook}}
 }
-

@@ -2,8 +2,8 @@
 % Please edit documentation in R/show.ViSigrid.r
 \docType{methods}
 \name{show-ViSigrid-method}
-\alias{show,ViSigrid-method}
 \alias{show-ViSigrid-method}
+\alias{show,ViSigrid-method}
 \title{Method \code{show-ViSigrid}}
 \usage{
 \S4method{show}{ViSigrid}(object)
@@ -17,4 +17,3 @@ Method show for ViSigrid object.
 \seealso{
 \code{\linkS4class{ViSigrid}} and see \code{\link{plot-ViSigrid-method}} for examples.
 }
-

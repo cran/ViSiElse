@@ -2,9 +2,9 @@
 % Please edit documentation in R/ViSibook.r
 \docType{methods}
 \name{ConvertFromViSibook-ViSibook-method}
-\alias{ConvertFromViSibook}
-\alias{ConvertFromViSibook,ViSibook-method}
 \alias{ConvertFromViSibook-ViSibook-method}
+\alias{ConvertFromViSibook,ViSibook-method}
+\alias{ConvertFromViSibook}
 \title{Method \code{ConvertFromViSibook-ViSibook}}
 \usage{
 ConvertFromViSibook(x)
@@ -23,4 +23,3 @@ The method \code{ConvertFromViSibook} converts a ViSibook in a data.frame object
 \seealso{
 \code{\linkS4class{ViSibook}} and see \code{\link{plot-ViSigrid-method}} for examples.
 }
-

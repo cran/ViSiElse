@@ -5,8 +5,8 @@
 \alias{initialize,ViSibook-method}
 \title{Method \code{initialize-ViSibook}}
 \usage{
-\S4method{initialize}{ViSibook}(.Object, vars, label, typeA, showorder, deb,
-  fin, GZDeb, GZFin, Repetition, BZBeforeDeb, BZBeforeFin, BZAfterDeb,
+\S4method{initialize}{ViSibook}(.Object, vars, label, typeA, showorder,
+  deb, fin, GZDeb, GZFin, Repetition, BZBeforeDeb, BZBeforeFin, BZAfterDeb,
   BZAfterFin, BZLong, BZLtype, NAMES)
 }
 \arguments{
@@ -54,4 +54,3 @@ Method initialize for class ViSibook object.
 \seealso{
 See \code{\link{plot-ViSigrid-method}} for examples.
 }
-

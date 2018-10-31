@@ -2,8 +2,8 @@
 % Please edit documentation in R/ViSibook.r
 \docType{class}
 \name{ViSibook-class}
-\alias{ViSibook}
 \alias{ViSibook-class}
+\alias{ViSibook}
 \title{Class \code{ViSiBook}}
 \description{
 Class \code{ViSibook} defines the structure of the process to be plotted.
@@ -45,14 +45,14 @@ Class \code{ViSibook} defines the structure of the process to be plotted.
 
 \item{\code{BZAfterFin}}{a vector, optional, \code{BZAfterFin} stores punctual black zone 2 ending time.}
 
-\item{\code{BZLong}}{a vector, optional, \code{BZLong} stores the long action black zome time.}
+\item{\code{BZLong}}{a vector, optional, \code{BZLong} stores the long action black zone time.}
 
 \item{\code{BZLtype}}{a vector, optional, \code{BZLtype} stores the type of the black zone,
 "time" if the action should be finish at a time, "span" if the action should be finish in a time.}
 
 \item{\code{NAMES}}{a vector storing names of slots that are to be defined.}
 }}
+
 \seealso{
 \code{\link{visielse}} for examples.
 }
-
