@@ -15,18 +15,18 @@ Class \code{ViSibook} defines the structure of the process to be plotted.
 
 \item{\code{label}}{a vector storing brief description of actions.}
 
-\item{\code{typeA}}{a vector storing type of actions, "l" for long ( which have a stating time and an ending time ), "p" for punctual.}
+\item{\code{typeA}}{a vector storing type of actions, "l" for long actions ( which have a stating time and an ending time ), "p" for punctual actions.}
 
-\item{\code{showorder}}{a vector storing order in which actions will be plotted. When an actions is not to be plot
+\item{\code{showorder}}{a vector storing order in which actions will be plotted. When an action should not be plotted,
 \code{showorder} should be \code{NA}.}
 
 \item{\code{deb}}{a vector. \itemize{
-\item{Long actions}{ \code{deb} stores the punctual action names that corresponds to long actions beginning.}
+\item{Long actions}{ \code{deb} stores the punctual action names that delimit the long actions beginning.}
 \item{Punctual action}{ \code{NA} .}
 }}
 
 \item{\code{fin}}{a vector. \itemize{
-\item{Long actions}{ \code{fin} stores the punctual action names that corresponds to long actions ending.}
+\item{Long actions}{ \code{fin} stores the punctual action names that delimit the long actions ending.}
 \item{Punctual actions}{ \code{NA} .}
 }}
 
@@ -35,7 +35,7 @@ Class \code{ViSibook} defines the structure of the process to be plotted.
 \item{\code{GZFin}}{a vector, optional, \code{GZFin} stores punctual actions green zone ending time.}
 
 \item{\code{Repetition}}{optional a vector, optional, When a green zone is defined,
-\code{Repetition} stores the length of the time interval between green zones.}
+\code{Repetition} stores the duration of the time interval between green zones.}
 
 \item{\code{BZBeforeDeb}}{a vector, optional, \code{BZBeforeDeb} a vector storing punctual black zone 1 starting time.}
 

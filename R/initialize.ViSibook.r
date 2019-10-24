@@ -5,13 +5,13 @@
 #' @exportMethod initialize
 #' @docType methods
 #' @param .Object a ViSibook object.
-#' @param vars a vector storing names of actions.
-#' @param label a vector. storing brief description of actions.
-#' @param typeA Vector storing type of actions, "l" for long actions, "p" for punctuals.
-#' @param showorder vector storing order in which actions will be plotted, is an actions is not to be plot its showorder is "NA".
+#' @param vars Vector storing names of actions.
+#' @param label Vector storing brief description of actions.
+#' @param typeA Vector storing type of actions, "l" for long actions, "p" for punctual actions.
+#' @param showorder Vector storing order in which actions will be plotted. showorder should be "NA" for actions not to be plotted.
 #' @param deb Vector storing, for long actions, the punctual action names that corresponds to its start.
-#' @param fin Vector storing, for long actions, the punctual action that corresponds to its end.
-#' @param GZDeb Vector storing punctuals actions green zone starting time.
+#' @param fin Vector storing, for long actions, the punctual action names that corresponds to its end.
+#' @param GZDeb Vector storing punctual actions green zone starting time.
 #' @param GZFin Vector storing punctual action green zone ending time.
 #' @param Repetition Vector storing if the green zones should be repeated the time interval of repetition.
 #' @param BZBeforeDeb Vector storing punctual black zone 1 starting time.
@@ -20,7 +20,7 @@
 #' @param BZAfterFin Vector storing punctual black zone 2 ending time. 
 #' @param BZLong Vector storing the long action black zone time. 
 #' @param BZLtype Vector storing the type of the black zone,
-#' "time" if the action should be finish at a time, "span" if the action should be finish in a time.
+#' "time" if the action should be finish at a deadline, "span" if the action should not last more than a period.
 #' @param NAMES Vector storing names of slots that are to be considered for \code{\link{plot-ViSigrid-method}}.
 #' @return a ViSibook object
 #' @seealso See \code{\link{plot-ViSigrid-method}} for examples.

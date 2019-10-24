@@ -12,16 +12,16 @@ plotL <- function(L , idsort , inftps , group , BZL , Lsup , idsup , iip ,t_0, c
   }
   idsort <- as.vector(idsort)
  if ( length(idsort) > 0 ) {
-  if ( dim( L )[ 1 ] > 0 ) {  																	# If there is some individuals having done the action
+  if ( dim( L )[ 1 ] > 0 ) {  																	
     grid::pushViewport( grid::viewport( x = grid::unit( 0 , "npc" ) ,
                             y = grid::unit( 1/2 , "npc" ) ,
                             width = grid::unit( 1 , "npc" ) , 
                             height = grid::unit( linA , "npc" ) ,
                             just = c( 0 , 1/2 )))
-    grid::pushViewport( grid::viewport( layout = grid.layout( ngl , 1 ) ) )					# layout individuals
+    grid::pushViewport( grid::viewport( layout = grid.layout( ngl , 1 ) ) )				
    if ( length(idsort) > 1 ) {
      for (ind in idsort ) {
-       grid::pushViewport( grid::viewport( layout.pos.row = which( idsort == ind ) , 				# goto layout corresponding to ViSigrid object sorting
+       grid::pushViewport( grid::viewport( layout.pos.row = which( idsort == ind ) , 				
                               layout.pos.col = 1 ))
        grid::pushViewport( grid::viewport( x = grid::unit(  L[ ind , 1 ]  / inftps , "npc" ) ,
                               y = grid::unit( 0 , "npc" ) , 

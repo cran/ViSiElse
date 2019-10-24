@@ -7,7 +7,7 @@ buildL <- function(X, book, ia, group, decrgr2, sorted.line, method, vect_tps, B
   if (any( is.na( L2 ) ) ) {
     L2[ unique( c( which( is.na( L2[ , 1 ] ) ) , which( is.na( L2[ , 2 ] ) ) ) ) , ] <- matrix( rep( -1 , length( unique(c( which( is.na( L2[ , 1 ] ) ) , which( is.na( L[ ,2] ) ) ) ) ) * 2 ) , ncol = 2 )
   }
-  ### Sorted individuals lines?
+  ### Sorted individuals lines
   if (sorted.line == TRUE ) {
     if (method == "within" || method == "cut" ) {
       idsort <- c( which( group == levels( group )[ 1 ] )[ sort( L2[ which( group == levels( group )[ 1 ] ) , 1 ] , index.return = TRUE)$ix ] ,
@@ -23,7 +23,7 @@ buildL <- function(X, book, ia, group, decrgr2, sorted.line, method, vect_tps, B
   }else{
     idsort <- seq( 1 , dim(L)[1] , 1 )
   }
-  ### Black Zone voir si besoin de changer L par L2
+  ### Black Zone voir (si besoin de changer L par L2)
   if (BZL == TRUE || length( methods::slot( book , "BZLtype" ) ) > 0 ) {
     if ( (is.na( methods::slot( book , "BZLong")[ ia ] ) == FALSE ) ) {
       temp <- switch( 	methods::slot( book , "BZLtype")[ ia ] ,

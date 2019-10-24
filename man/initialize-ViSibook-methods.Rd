@@ -12,19 +12,19 @@
 \arguments{
 \item{.Object}{a ViSibook object.}
 
-\item{vars}{a vector storing names of actions.}
+\item{vars}{Vector storing names of actions.}
 
-\item{label}{a vector. storing brief description of actions.}
+\item{label}{Vector storing brief description of actions.}
 
-\item{typeA}{Vector storing type of actions, "l" for long actions, "p" for punctuals.}
+\item{typeA}{Vector storing type of actions, "l" for long actions, "p" for punctual actions.}
 
-\item{showorder}{vector storing order in which actions will be plotted, is an actions is not to be plot its showorder is "NA".}
+\item{showorder}{Vector storing order in which actions will be plotted. showorder should be "NA" for actions not to be plotted.}
 
 \item{deb}{Vector storing, for long actions, the punctual action names that corresponds to its start.}
 
-\item{fin}{Vector storing, for long actions, the punctual action that corresponds to its end.}
+\item{fin}{Vector storing, for long actions, the punctual action names that corresponds to its end.}
 
-\item{GZDeb}{Vector storing punctuals actions green zone starting time.}
+\item{GZDeb}{Vector storing punctual actions green zone starting time.}
 
 \item{GZFin}{Vector storing punctual action green zone ending time.}
 
@@ -41,7 +41,7 @@
 \item{BZLong}{Vector storing the long action black zone time.}
 
 \item{BZLtype}{Vector storing the type of the black zone,
-"time" if the action should be finish at a time, "span" if the action should be finish in a time.}
+"time" if the action should be finish at a deadline, "span" if the action should not last more than a period.}
 
 \item{NAMES}{Vector storing names of slots that are to be considered for \code{\link{plot-ViSigrid-method}}.}
 }

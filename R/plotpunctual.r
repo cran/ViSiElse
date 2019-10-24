@@ -18,7 +18,7 @@ plotpunctual <- function(mat , iip , book , colvect , lgH , method , linA , alph
     grid::upViewport()
     grid::upViewport()
   }
-  if (method == "join" ) {   # Division per group only at last two person of the qsame group are on the same pixel of time
+  if (method == "join" ) {   # Division per group only at last two person of the same group are on the same pixel of time
     grid::pushViewport( grid::viewport( x = unit( 0 , "npc" ) ,
                             y = unit( 1/2 , "npc" ) ,
                             width = unit( 1 , "npc" ) , 

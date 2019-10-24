@@ -11,9 +11,9 @@ Class \code{ViSigrid} defines the structure of the process to be plotted.
 \section{Slots}{
 
 \describe{
-\item{\code{MATp}}{A \code{"dgCMatrix"}. It stores the grid for all punctuals actions in the book.}
+\item{\code{MATp}}{A \code{"dgCMatrix"}. It stores the grid for all punctual actions in the book.}
 
-\item{\code{MATpsup}}{A \code{"dgCMatrix"}. It stores the grid for all punctuals actions 
+\item{\code{MATpsup}}{A \code{"dgCMatrix"}. It stores the grid for all punctual actions 
 in the book corresponding to the supplementary times.}
 
 \item{\code{idsup}}{A \code{"vector"} It stores individuals id having supplementary times.}
@@ -35,7 +35,7 @@ stores the data corresponding to those actions.}
 
 \item{\code{vect_tps}}{A \code{"vector"} it stores the times vector mapping the grid.}
 
-\item{\code{informers}}{A \code{"matrix"} It stores the indicators (mean, median or NULL) by actions.}
+\item{\code{informers}}{A \code{"matrix"} It stores the statistics (mean, median or NULL) by actions.}
 
 \item{\code{testsP}}{A \code{"vector"} Results of tests p.value<threshold.test.}
 

@@ -6,8 +6,8 @@
 #' @exportMethod plot
 #' @docType methods
 #' @param x a ViSibook object.
-#' @param ncharmax is the number maximum of plotted character for the labels of punctual actions, set to 10.
-#' @param ncharmaxdelay number maximum of  plotted character for the labels of long actions, set to 50.
+#' @param ncharmax is the maximum number of plotted character for the labels of punctual actions, set to 10.
+#' @param ncharmaxdelay is the maximum number of plotted character for the labels of long actions, set to 50.
 #' @seealso \code{\linkS4class{ViSibook}}, \code{\link{visielse}}
 setMethod( f = "plot",
            signature = "ViSibook",

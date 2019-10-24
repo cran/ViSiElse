@@ -1,11 +1,11 @@
-#' ConvertoViSibook convert a \code{data.frame} in \code{ViSibook} object.
+#' ConvertoViSibook convert a \code{data.frame} into a \code{ViSibook} object.
 #' 
 #' @title Function \code{ConvertoViSibook}
 #' @rdname ConvertoViSibook
 #' @aliases ConvertoViSibook
 #' @export ConvertoViSibook
 #' @param x a dataframe. \code{x} should contains at least the columns \strong{vars, label, typeA, showorder, deb, fin }.
-#' Optionally other characteristics can be filled :
+#' Optionally, other characteristics can be filled :
 #'  \strong{GZDebn,  GZFin, Repetition, BZBeforeDeb, BZBeforeFin, BZAfterDeb, BZAfterFin, BZLong , BZLtype }.
 #' @return a ViSibook object.
 #' @seealso See  \code{\link{visielse}} for examples.

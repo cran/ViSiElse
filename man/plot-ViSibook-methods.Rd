@@ -11,9 +11,9 @@
 \arguments{
 \item{x}{a ViSibook object.}
 
-\item{ncharmax}{is the number maximum of plotted character for the labels of punctual actions, set to 10.}
+\item{ncharmax}{is the maximum number of plotted character for the labels of punctual actions, set to 10.}
 
-\item{ncharmaxdelay}{number maximum of  plotted character for the labels of long actions, set to 50.}
+\item{ncharmaxdelay}{is the maximum number of plotted character for the labels of long actions, set to 50.}
 }
 \description{
 Method plot for ViSibook object.

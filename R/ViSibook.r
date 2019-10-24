@@ -5,14 +5,14 @@
 #' during experimental observations of the \strong{realization of a procedure} like a medical algorithm.
 #' It graphically presents an overview of individuals and group \strong{actions usually acquired from timestamps
 #' during video recorded sessions}. Options of the package allow adding graphical information
-#' as statistical indicators (mean, standard deviation, quantiles or statistical tests) but also for
+#' as statistics (mean, standard deviation, quantiles or statistical tests) but also for
 #' each action green or black zones providing visual information about the accuracy of the realized actions.
 #'
 #' @section Principal:
 #' ViSiElse concerns \strong{behavioural processes} that, like a simulated healthcare procedure,
 #' can be \strong{decomposed in actions}. We define two different types of actions in ViSiElse:
 #' \strong{punctual and long}. The actions called punctual are brief actions defined as a \strong{time points}.
-#' They \strong{does not last enough to be measured on the chosen time scale}. The actions called long are the
+#' They \strong{do not last long enough to be measured on the chosen time scale}. The actions called long are the
 #' ones defined by \strong{duration}. They are characterized by both \strong{a beginning punctual action and an
 #' ending one}. In order to \strong{model a procedure}, there is a need to sort actions in the way they
 #' are supposed to be realized as defined for example by medical consensus and/or algorithms for a
@@ -21,21 +21,20 @@
 #'
 #' @section S4-methods:
 #' This Package contains two S4class of object: \code{\linkS4class{ViSibook}} and ViSigrid.
-#' Basically a \code{\linkS4class{ViSibook}} object will store information on a process
+#' Basically a \code{\linkS4class{ViSibook}} object will store informations on a process
 #' like a health care procedure, then a \code{\linkS4class{ViSigrid}} object is built with
 #' observations of this procedure and the procedure \code{\linkS4class{ViSibook}}, and finally the graphic
-#' is optained by plotting this \code{\linkS4class{ViSigrid}} object.
+#' is obtained by plotting this \code{\linkS4class{ViSigrid}} object.
 #'
 #'
 #' @section ViSibook-class:
 #' The \strong{minimum stucture} for a ViSibook must give for each action its name (without special characters but"_"),
-#' its label, and its type (punctual or long). For a long action, in addition it is necessary to provide the two specific
-#' actions that defined its starting and ending.
+#' its label, and its type (punctual or long). In addition, for long actions only, it is necessary to provide the two punctual
+#' actions names delimiting the begining and the end of the long one.
 #' The \strong{order} by which actions are supposed to happen is also required. It is possible to not attribute a rank order at
-#' some actions, but not all.
-#' This is useful in the case of a procedure focuses on a long action but
-#' does not on punctual actions defining its end or beginning thus those two punctual actions can
-#'  have an order not set.
+#' some actions but not all.
+#' This is useful in case of procedures only focusing on long actions, when users do not want
+#' to plot the punctual actions delimitating the long ones. The punctual actions order is set to "NA".
 #'
 #'
 #' Beyond the minimum structure green zones or/and black zones can be defined to help to visualize if a behaviour
@@ -50,7 +49,7 @@
 #' \item{ The procedure structure }{ : It is stored in a ViSibook object. }
 #' \item{Observations}{ : Dataset which stores individuals realisation times for each punctal action.}
 #' }
-#' Options can be add like group, indicator,... see \code{ \link{visielse}} and \code{\linkS4class{ViSigrid}}
+#' Options can be add like group, statistics,... see \code{ \link{visielse}} and \code{\linkS4class{ViSigrid}}
 #' to get more details explanations.
 #'
 #'
@@ -74,21 +73,21 @@ NULL
 #' @rdname ViSibook-class
 #' @slot vars a vector storing names of actions.
 #' @slot label a vector storing brief description of actions.
-#' @slot typeA a vector storing type of actions, "l" for long ( which have a stating time and an ending time ), "p" for punctual.
-#' @slot showorder a vector storing order in which actions will be plotted. When an actions is not to be plot
+#' @slot typeA a vector storing type of actions, "l" for long actions ( which have a stating time and an ending time ), "p" for punctual actions.
+#' @slot showorder a vector storing order in which actions will be plotted. When an action should not be plotted,
 #'  \code{showorder} should be \code{NA}.
 #' @slot deb a vector. \itemize{
-#' \item{Long actions}{ \code{deb} stores the punctual action names that corresponds to long actions beginning.}
+#' \item{Long actions}{ \code{deb} stores the punctual action names that delimit the long actions beginning.}
 #' \item{Punctual action}{ \code{NA} .}
 #' }
 #' @slot fin a vector. \itemize{
-#' \item{Long actions}{ \code{fin} stores the punctual action names that corresponds to long actions ending.}
+#' \item{Long actions}{ \code{fin} stores the punctual action names that delimit the long actions ending.}
 #' \item{Punctual actions}{ \code{NA} .}
 #' }
 #' @slot GZDeb a vector, optional, \code{GZdeb} stores punctual actions green zone starting time.
 #' @slot GZFin a vector, optional, \code{GZFin} stores punctual actions green zone ending time.
 #' @slot Repetition optional a vector, optional, When a green zone is defined,
-#'  \code{Repetition} stores the length of the time interval between green zones.
+#'  \code{Repetition} stores the duration of the time interval between green zones.
 #' @slot BZBeforeDeb a vector, optional, \code{BZBeforeDeb} a vector storing punctual black zone 1 starting time.
 #' @slot BZBeforeFin a vector, optional, \code{BZBeforeFin} storing punctual black zone 1 ending time.
 #' @slot BZAfterDeb a vector, optional, \code{BZAfterDeb} stores punctual black zone 2 starting time .

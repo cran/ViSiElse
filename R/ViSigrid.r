@@ -2,8 +2,8 @@
 #' @title Class \code{ViSigrid}
 #' @name ViSigrid-class
 #' @rdname ViSigrid-class
-#' @slot MATp A \code{"dgCMatrix"}. It stores the grid for all punctuals actions in the book. 
-#' @slot MATpsup A \code{"dgCMatrix"}. It stores the grid for all punctuals actions 
+#' @slot MATp A \code{"dgCMatrix"}. It stores the grid for all punctual actions in the book. 
+#' @slot MATpsup A \code{"dgCMatrix"}. It stores the grid for all punctual actions 
 #' in the book corresponding to the supplementary times.
 #' @slot idsup A \code{"vector"} It stores individuals id having supplementary times. 
 #' @slot colvect A \code{"matrix"} Matrix with colors to use. 
@@ -15,7 +15,7 @@
 #' @slot book A \code{"ViSibook"} it stores the structure of the grid for the plot. 
 #' @slot group A \code{"factor"} it stores the group for the each individuals. 
 #' @slot vect_tps A \code{"vector"} it stores the times vector mapping the grid. 
-#' @slot informers A \code{"matrix"} It stores the indicators (mean, median or NULL) by actions. 
+#' @slot informers A \code{"matrix"} It stores the statistics (mean, median or NULL) by actions. 
 #' @slot testsP A \code{"vector"} Results of tests p.value<threshold.test. 
 #' @slot parameters A \code{"list"}. It stores the parameters put in the \code{\link{visielse}} function. 
 #' @seealso \code{\link{visielse}}, \code{\link{plot,ViSigrid-method}}, \code{\linkS4class{ViSibook}}

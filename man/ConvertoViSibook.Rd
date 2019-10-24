@@ -8,14 +8,14 @@ ConvertoViSibook(x)
 }
 \arguments{
 \item{x}{a dataframe. \code{x} should contains at least the columns \strong{vars, label, typeA, showorder, deb, fin }.
-Optionally other characteristics can be filled :
+Optionally, other characteristics can be filled :
  \strong{GZDebn,  GZFin, Repetition, BZBeforeDeb, BZBeforeFin, BZAfterDeb, BZAfterFin, BZLong , BZLtype }.}
 }
 \value{
 a ViSibook object.
 }
 \description{
-ConvertoViSibook convert a \code{data.frame} in \code{ViSibook} object.
+ConvertoViSibook convert a \code{data.frame} into a \code{ViSibook} object.
 }
 \seealso{
 See  \code{\link{visielse}} for examples.

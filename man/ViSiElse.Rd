@@ -12,20 +12,20 @@ visielse(X, book = NULL, is.ViSibook = FALSE, doplot = TRUE,
   times = FALSE, timeformat = c("hh:mm:ss"), idsubject = 1)
 }
 \arguments{
-\item{X}{A \code{data.frame} or \code{matrix}. \code{X} stores punctual action realization times.
+\item{X}{A \code{data.frame} or \code{matrix}. \code{X} stores punctual action timestamps.
 The actions are defined in \code{book}, and X columns names should correspond to the slot "vars" of \code{book}.
-X must also have a column to identify individuals.}
+X must also have a column to identify individuals (id column).}
 
 \item{book}{A \code{data.frame} or a \code{ViSibook} or NULL.  \code{book} stores the process structure. \itemize{
  \item{ If it is a \code{data.frame} it should contains at least the columns \strong{vars, label, typeA, showorder, deb, fin }.
-Optionally other characteristics can be filled : \strong{GZDebn,  GZFin, Repetition, BZBeforeDeb, BZBeforeFin, BZAfterDeb, BZAfterFin, BZLong , BZLtype }.}
+Optionally, other characteristics can be filled : \strong{GZDebn,  GZFin, Repetition, BZBeforeDeb, BZBeforeFin, BZAfterDeb, BZAfterFin, BZLong , BZLtype }.}
 \item{ If it is a \code{ViSibook} it should correspond to the columns names of X.}
 \item{ If it is \code{NULL} the process is the ordered list of punctual actions given by the columns names of X.}
 }}
 
 \item{is.ViSibook}{A logical \itemize{ \item{ \code{FALSE} if book is a \code{data.frame} or \code{NULL}}. \item{ \code{TRUE} is book is a ViSibook.}}}
 
-\item{doplot}{A logical If \code{FALSE} the graphic is not plotted.}
+\item{doplot}{A logical If \code{FALSE}, the graphic is not plotted.}
 
 \item{Xsup}{A \code{data.frame} or \code{matrix} storing supplementary time data,  \strong{all individuals in}  \code{Xsup}  \strong{must be in } \code{X}.}
 
@@ -92,23 +92,22 @@ number of the column of X that contains individuals id numbers.}
 a ViSigrid object.
 }
 \description{
-\code{visielse} plots the graphic from data and build an object class
-\code{ViSigrid} with at least data of times of individual execution
-for each punctual action defined in the \code{ViSibook}.
+\code{visielse} plots the graphic from time data and build an object class
+\code{ViSigrid} with, at least, the time data of each punctual action defined
+ in the \code{ViSibook} for all subjects.
 }
 \details{
 \itemize{
 \item{ \code{method} }{   \itemize{
- \item{ \code{global} }{:  The plot of the ViSigrid object returned will not consider the parameter \code{group} and plot indistinctly all individuals. }
- \item{ \code{cut} }{: In the plot of the ViSigrid object returned each group will be plotted apart within each action line. }
- \item{  \code{join} }{: In the plot of the ViSigrid object returned groups will be plotted gathered within each action line. }
- \item{\code{within}}{ : In the plot of the ViSigrid object returned , within each action line, there will be two lines,
-as for the method \code{cut}, the difference is that the first line will plot all individuals and
-the second one individuals belonging to the group specified in \code{grwithin}. }
+ \item{ \code{global} }{:  The plot of the ViSigrid object will not consider the parameter \code{group} and plot indistinctly all individuals. }
+ \item{ \code{cut} }{: In the plot of the ViSigrid object, each group will be plotted separately, one under the other with different colors. }
+ \item{  \code{join} }{: In the plot of the ViSigrid object, groups are spatially mixed but they are represented by different colors. }
+ \item{\code{within}}{ : In the plot of the ViSigrid object, all individuals are plotted together then the group specified in \code{grwithin}
+ is plotted another time underneath. }
  } }
 \item{ \code{informer}}{
 
-The parameter \code{informer} allows choosing an indicator. \code{informer} can take three values:
+The parameter \code{informer} allows users to choose the statistics to be plotted. \code{informer} can take three values:
 \itemize{
 \item{ \code{median}:}{ Median and quartiles are calculated for each action, using the function
 quantile from the package stats. This is the default value.}
@@ -116,22 +115,22 @@ quantile from the package stats. This is the default value.}
 functions mean and var from the package stats.}
 \item{\code{NULL}:}{ no indicators are computed.}
 }
-When a group is declared indicators are calculated by group if the method cut or
+When a group is defined, statistics are calculated per group if the method cut or
 within is chosen.
 
-When plotting the \code{\linkS4class{ViSigrid}} object, indicators for a punctual action are represented by
-white circles linked by a line. For long action, only a black line is plotted from
-the median (or mean) of the punctual action staring it. The line length represents
+When plotting the \code{\linkS4class{ViSigrid}} object, statistics for punctual actions are represented by
+white circles linked by a line. For long action, only a black line is plotted starting at 
+the median (or mean) value of the punctual action staring times. The line length represents
 the median (or mean) of the long action duration.
 Informers are computed directly on the given matrix for punctual action.
-And for a long action it is calculated on the difference between the beginning punctual action and the ending one.
+And for long actions, it is based on the difference between the punctual action defining its beginning and the one defining its ending.
 }
 \item{ \code{tests} and \code{threshold.test}}{
 
 As for the parameter informer, tests are computed on the given
-matrix or data.frame X for a punctual action. And for a long action it is calculated on its difference between its beginning and ending punctual actions.
+matrix or data.frame X for a punctual action. And for a long action, it is calculated on its difference between its beginning and its ending punctual actions.
 In  \code{\link{plot-ViSigrid-method}}, results of the tests are represented by a star only when the
- resulted p-value is bellow or equal to the parameter threshold.test.
+ resulted p-value is bellow or equal to value defined by the parameter threshold.test.
 }
 \item{ \code{pixel}}{
 
